@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Usages de l’IA — Fiche élève interactive</title>
+  <style>
+    :root{
+      --bg:#fafafa;--card:#ffffff;--ink:#1f2937;--muted:#6b7280;--primary:#2563eb;--ring:#93c5fd;
+      --chip:#f9fafb;--chipBorder:#e5e7eb;--chipActive:#dbeafe;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,'Helvetica Neue',Arial,sans-serif;color:var(--ink);background:var(--bg)}
+    header{background:#f1f5ff;border-bottom:1px solid #e5e7eb}
+    .wrap{max-width:1100px;margin:0 auto;padding:20px}
+    h1{margin:.2rem 0 0;font-size:1.8rem;color:#1e3a8a}
+    .subtitle{color:var(--muted);margin:.3rem 0 1rem}
+
+    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.03)}
+    .grid{display:grid;gap:18px}
+
+    .id-block{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:8px}
+    label{font-size:.9rem;color:var(--muted)}
+    input[type="text"], textarea, select{width:100%;padding:10px 12px;border-radius:10px;border:1px solid #d1d5db;background:#fff;font-size:1rem;outline:none}
+    textarea{min-height:110px;resize:vertical}
+    input:focus, textarea:focus, select:focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--ring)}
+
+    table{width:100%;border-collapse:collapse;margin-top:10px}
+    thead th{background:#f3f4f6;font-weight:600}
+    th,td{border:1px solid #e5e7eb;padding:10px;text-align:left;vertical-align:top}
+    tbody tr:nth-child(odd){background:#fcfcff}
+    tbody tr:hover{background:#f9fafb}
+
+    .option-set{display:flex;gap:8px;flex-wrap:wrap}
+    label.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:999px;border:1px solid var(--chipBorder);background:var(--chip);cursor:pointer;transition:.2s}
+    label.chip:hover{background:#f3f4f6}
+    label.chip input{display:none}
+    label.chip:has(input:checked){background:var(--chipActive);border-color:#93c5fd}
+
+    .section{padding:16px}
+
+    .print-btn{display:block;margin:30px auto 40px auto;border:1px solid #d1d5db;border-radius:10px;padding:12px 20px;background:var(--primary);color:white;font-weight:600;cursor:pointer;font-size:1rem}
+
+    .portrait{padding:16px;border:1px solid #e5e7eb;border-radius:10px;background:#f9fafb;margin-top:10px;display:none}
+
+    @media print{
+      header{border:none;background:#fff}
+      .card{border:none;box-shadow:none}
+      .print-btn{display:none}
+      body{background:#fff}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>🤖 Fiche élève — Usages de l’IA</h1>
+      <p class="subtitle">Complète les champs, coche les réponses et imprime ta fiche à la fin.</p>
+      <div class="id-block">
+        <div>
+          <label for="eleve_nom">Nom / Prénom</label>
+          <input id="eleve_nom" type="text" placeholder="Nom Prénom" />
+        </div>
+        <div>
+          <label for="eleve_classe">Classe</label>
+          <input id="eleve_classe" type="text" placeholder="Ex : 4eB" />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap grid" role="main">
+
+    <section class="card section">
+      <table>
+        <thead>
+          <tr>
+            <th>Exemple d’utilisation de l’IA</th>
+            <th>Type d’usage</th>
+            <th>Domaine principal</th>
+            <th>L’IA est-elle vraiment utile ?</th>
+            <th>L’IA agit-elle automatiquement ?</th>
+            <th>Remplace-t-elle une méthode déjà maîtrisée ?</th>
+            <th>Usage par facilité ou meilleure solution ?</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section class="card section">
+      <h2>📱 Tes usages de l’IA</h2>
+      <p>Sélectionne les outils d’IA que tu utilises le plus souvent :</p>
+      <div class="option-set">
+        <label class="chip"><input type="checkbox" name="outils" value="ChatGPT"> ChatGPT</label>
+        <label class="chip"><input type="checkbox" name="outils" value="Gemini"> Gemini</label>
+        <label class="chip"><input type="checkbox" name="outils" value="Claude"> Claude</label>
+        <label class="chip"><input type="checkbox" name="outils" value="Mistral"> Mistral</label>
+        <label class="chip"><input type="checkbox" name="outils" value="Canva"> Canva Magic Write</label>
+        <label class="chip"><input type="checkbox" name="outils" value="Snapchat"> IA de Snapchat (MyAI)</label>
+        <label class="chip"><input type="checkbox" name="outils" value="Autre"> Autre</label>
+      </div>
+
+      <label for="frequence">À quelle fréquence utilises-tu ces outils ?</label>
+      <select id="frequence">
+        <option value="">Choisis...</option>
+        <option value="1">Plusieurs fois par jour</option>
+        <option value="2">1 fois par jour</option>
+        <option value="3">Quelques fois par semaine</option>
+        <option value="4">Rarement</option>
+        <option value="5">Jamais</option>
+      </select>
+
+      <label for="support">Sur quels appareils les utilises-tu ?</label>
+      <div class="option-set">
+        <label class="chip"><input type="checkbox" name="support" value="telephone"> Téléphone</label>
+        <label class="chip"><input type="checkbox" name="support" value="ordinateur"> Ordinateur</label>
+        <label class="chip"><input type="checkbox" name="support" value="tablette"> Tablette</label>
+        <label class="chip"><input type="checkbox" name="support" value="autre"> Autre</label>
+      </div>
+
+      <label for="usage_ecole">Utilises-tu l’IA pour ton travail scolaire ? Si oui, dans quels cas ?</label>
+      <textarea id="usage_ecole" placeholder="Ex : pour réviser, rédiger, corriger un texte, faire des recherches..."></textarea>
+
+      <button id="analyser" class="print-btn" style="background:#16a34a;margin-top:20px">🔍 Dresser mon portrait d’utilisateur IA</button>
+      <div class="portrait" id="portrait"></div>
+    </section>
+
+    <section class="card section" aria-labelledby="reflexion-titre">
+      <h2 id="reflexion-titre">💬 Questions de réflexion</h2>
+      <label for="q1">Parmi les exemples ci-dessus, lesquels utilises-tu <strong>sans t’en rendre compte</strong> ?</label>
+      <textarea id="q1" placeholder="Réponds ici..."></textarea>
+      <label for="q2">Dans quels cas l’IA t’apporte <strong>une vraie aide</strong> ?</label>
+      <textarea id="q2" placeholder="Réponds ici..."></textarea>
+      <label for="q3">Quand l’IA décide « à ta place » (recommandations, publicités), est-ce que cela <strong>t’arrange</strong> ou <strong>t’influence</strong> ?</label>
+      <textarea id="q3" placeholder="Réponds ici..."></textarea>
+      <label for="q4">Quand tu utilises une IA visible (ChatGPT, Gemini…), <strong>quelles sont les précautions à prendre ? Donne 4 précautions indispensables.</strong></label>
+      <textarea id="q4" placeholder="Liste ici les 4 précautions indispensables..."></textarea>
+      <label for="q5">Pour <strong>limiter l’impact environnemental</strong> des IA génératives, propose 3 comportements plus responsables que tout le monde devrait adopter.</label>
+      <textarea id="q5" placeholder="Indique ici 3 comportements responsables..."></textarea>
+    </section>
+
+    <button class="print-btn" id="btn-print">🖨️ Imprimer / Enregistrer en PDF</button>
+
+  </main>
+
+  <script>
+    const ROWS = [
+      { ex: "ChatGPT pour rédiger une introduction de rédaction", type:"IA générative visible", dom:"🏫 Scolaire" },
+      { ex: "Canva Magic Write pour créer une affiche", type:"IA générative visible", dom:"🎨 Création" },
+      { ex: "Copilot pour corriger du code informatique", type:"IA générative visible", dom:"🧠 Apprentissage / techno" },
+      { ex: "ChatGPT pour résumer un texte lu en classe", type:"IA générative visible", dom:"🏫 Scolaire" },
+      { ex: "DALL·E ou Bing Image Creator pour une image d’exposé", type:"IA générative visible", dom:"🎨 Création" },
+      { ex: "YouTube te propose une vidéo “à ne pas manquer”", type:"IA invisible (recommandation)", dom:"🎬 Loisirs / médias" },
+      { ex: "Netflix / Spotify te suggère un film ou une chanson", type:"IA invisible (préférence utilisateur)", dom:"🎵 Loisirs" },
+      { ex: "TikTok adapte ton fil “Pour toi” à ce que tu regardes", type:"IA invisible (profilage)", dom:"💬 Réseaux sociaux" },
+      { ex: "Les publicités changent selon ce que tu cherches sur Internet", type:"IA invisible (publicité ciblée)", dom:"💻 Vie numérique" },
+      { ex: "Google Maps t’indique le trajet le plus rapide", type:"IA prédictive", dom:"🧭 Vie quotidienne" },
+      { ex: "Ton téléphone débloque l’écran avec ton visage", type:"IA biométrique", dom:"🔐 Aide quotidienne" },
+      { ex: "", type:"", dom:"" , custom:true}
+    ];
+
+    const tbody = document.querySelector('tbody');
+    function radio(name, value, label){
+      const id = name+'-'+value;
+      return `<label class="chip"><input type="radio" name="${name}" id="${id}" value="${value}" /> ${label}</label>`;
+    }
+    function choice(name){return `<div class="option-set">${radio(name,'oui','Oui')}${radio(name,'non','Non')}</div>`;}
+    function easeBest(name){return `<div class="option-set">${radio(name,'facilite','Facilité')}${radio(name,'meilleure','Meilleure solution')}</div>`;}
+    function cellText(content, placeholder='Saisir ici…', key){return content===''?`<input type="text" id="${key}" placeholder="${placeholder}" />`:`<div>${content}</div>`;}
+    function buildTable(){tbody.innerHTML='';ROWS.forEach((row,idx)=>{const key='r'+idx;const tr=document.createElement('tr');tr.innerHTML=`<td>${cellText(row.ex,'Ton propre exemple…',key+'-ex')}</td><td>${row.custom?`<input type="text" id="${key}-type" placeholder="Type d’usage" />`:`<span>${row.type}</span>`}</td><td>${row.custom?`<input type="text" id="${key}-dom" placeholder="Domaine principal" />`:`<span>${row.dom}</span>`}</td><td>${choice(key+'-utile')}</td><td>${choice(key+'-auto')}</td><td>${choice(key+'-remplace')}</td><td>${easeBest(key+'-qualite')}</td>`;tbody.appendChild(tr);});}
+    buildTable();
+
+    document.getElementById('analyser').addEventListener('click',()=>{
+      const freq=parseInt(document.getElementById('frequence').value||5);
+      const portrait=document.getElementById('portrait');
+      let type="",desc="",adv="";
+
+      if(freq<=2){
+        type="🌐 Explorateur numérique";
+        desc="Tu explores activement les outils d’IA et cherches à en tirer parti dans ta vie quotidienne et scolaire.";
+        adv="Continue à expérimenter, mais veille à garder un esprit critique : vérifie toujours les sources, évite de laisser l’IA travailler à ta place et pense à limiter ton empreinte écologique en réduisant les requêtes inutiles.";
+      }else if(freq===3){
+        type="⚙️ Utilisateur équilibré";
+        desc="Tu utilises l’IA quand cela te semble utile, sans en abuser. Tu gardes un bon équilibre entre technologie et réflexion personnelle.";
+        adv="Garde cette approche réfléchie ! Vérifie toujours les informations produites, n’utilise pas l’IA pour faire ton travail à ta place et privilégie les usages sobres pour réduire l’impact environnemental.";
+      }else if(freq===4){
+        type="🌱 Curieux prudent";
+        desc="Tu utilises l’IA de manière occasionnelle. Tu t’y intéresses sans dépendance et tu fais preuve de prudence.";
+        adv="Explore un peu plus pour mieux comprendre les opportunités de l’IA, mais veille à ne pas l’utiliser par facilité. Pense aussi à limiter l’empreinte carbone liée à son usage.";
+      }else{
+        type="🧘 Non-utilisateur ou minimaliste";
+        desc="Tu utilises très peu ou pas du tout l’intelligence artificielle. Tu privilégies d’autres méthodes plus traditionnelles.";
+        adv="C’est une bonne chose de rester autonome, mais comprendre l’IA t’aidera à l’utiliser intelligemment quand c’est nécessaire. Souviens-toi qu’il faut éviter le gaspillage énergétique des IA et ne pas les laisser penser à ta place.";
+      }
+
+      portrait.innerHTML=`<h3>${type}</h3><p>${desc}</p><p><strong>Conseil :</strong> ${adv}</p>`;
+      portrait.style.display='block';
+    });
+
+    document.getElementById('btn-print').addEventListener('click',()=>window.print());
+  </script>
+</body>
+</html>
